@@ -51,16 +51,16 @@ public class TestDemo {
      */
     public static void main8(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String password = "hahaha";
-        int i = 0;
-        while(i < 3){
+        String password = "123";
+        int count = 3;
+        while(count != 0){
             System.out.println("请输入密码：");
-            String str = sc.nextLine();
-            if(str == password){
+            if(password.equals("123")){
                 System.out.println("登陆成功");
-                i++;
+                break;
             }else{
-                i++;
+                count--;
+                System.out.println("你还有"+count+"次机会");
                 continue;
             }
         }
