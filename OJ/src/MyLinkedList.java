@@ -11,68 +11,121 @@ import java.util.List;
  */
 
 public class MyLinkedList {
+
     /**
-     * 找到两个链表相交的起始节点
-     * @param head1
+     * 找到两个单链表相交的起始节点
+     * @param headA
+     * @param headB
      * @return
      */
-//    public ListNode GetInter(ListNode head1,ListNode head2){
-//
-//    }
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB){
+        //0. 分别定义一个pl和ps来指定最长和最短的链表
+        //假设刚开始的时候headA最长
+        ListNode pl = headA;
+        ListNode ps = headB;
+        //1. 分别求得两个链表的长度
+        int lenA = 0;
+        int lenB = 0;
+        while(pl != null){
+            lenA++;
+            pl = pl.next;
+        }
+        while(ps != null){
+            lenB++;
+            ps = ps.next;
+        }
+
+        //2. pl指向的链表一定是最长的
+        //重点：因为 为了求长度，这两个引用都是null了
+        pl = headA;
+        ps = headB;
+
+        //长度差
+        int len = lenA - lenB;
+        if(len < 0){ //B长
+            pl = headB;
+            ps = headA;
+            len = lenB - lenA;
+        }
+
+        //3. 让pl指向的链表走差值len步
+        while(len != 0){
+            pl = pl.next;
+            len--;
+        }
+
+        //4. 两个链表同时走
+        while(pl != ps){
+            pl = pl.next;
+            ps = ps.next;
+        }
+        //两个链表没有相交节点
+        if(pl == null){
+            return null;
+        }
+        return pl;
+    }
     /**
      * 判断链表是否为回文结构
+     * 快慢指针：slow 一步fast 两步， fast到最后 则slow到中间
      * @param head
      * @return
      */
     public boolean check(ListNode head) {
-        int count = size(head) / 2;
-        ListNode cur = head;
-        while (count != 0) {
-            cur = cur.next;
-            count--;
+        ListNode slow = head;
+        ListNode fast = head;
+        //1. 找到中间节点
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
         }
-        ListNode mid = cur;
-        ListNode pre = null;
-        while (mid != null) {
-            ListNode temp = mid.next;
-            mid.next = pre;
-            pre = mid;
-            mid = temp;  //pre
+        //2. 翻转
+        ListNode cur = slow.next;
+        while(cur != null){
+            ListNode curNext = cur.next;
+            cur.next = slow;
+            slow = cur;
+            cur = curNext;
         }
-        while(head!=null){
-            if(head.val!=pre.val) return false;
+        //3. head从前往后走，slow从后往前走，直到相遇即为回文结构
+        //不能用fast,偶数节点情况下fast指向null
+        while(head != slow){
+            if(head.val != slow.val){
+                return false;
+            } //偶数情况
+            if(head.next == slow){  //两个if不能互换
+                return true;
+            }
             head = head.next;
-            pre = pre.next;
+            slow = slow.next;
         }
-        return true;
+        return false;
     }
 
-    /** ❌
+    /**
      * 删除有序链表中的重复节点
+     * 当头节点不固定时，引入傀儡节点
      * @param head
      * @return
      */
-    public ListNode Delete(ListNode head)
-    {
-        if(head == null || head.next == null){
-            return head;
-        }
-        ListNode del = new ListNode(-1);
-        del.next = head;
-        ListNode pre = del;
-        ListNode cur = del.next;
+    public ListNode Delete(ListNode head) {
+        ListNode newHead = new ListNode(-1);
+        ListNode temp = newHead;
+        ListNode cur = head;
         while(cur != null){
-            if(cur.next!=null && cur.val == cur.next.val){
-                while(cur.next != null && cur.val == cur.next.val){
+            if(cur.val == cur.next.val){
+                while(cur.val == cur.next.val){
                     cur = cur.next;
                 }
-                pre.next = cur.next;
+                cur = cur.next;
             }else{
-                pre = pre.next;
+                temp.next = cur;
+                temp = temp.next;
+                cur = cur.next;
             }
-            cur = cur.next;
         }
-        return del.next;
+        temp.next = null;
+        return newHead.next;
     }
 
 
@@ -106,13 +159,14 @@ public class MyLinkedList {
      * 合并两个有序链表
      * @param head1
      * @param head2
+     * newHead -> 傀儡节点
+     * temp -> 用来串节点的引用
      * @return
      */
     public ListNode MergeList(ListNode head1,ListNode head2){
-        ListNode cur = new ListNode(-1);//创建一个头指针
-        ListNode pre1 = head1;
-        ListNode pre2 = head2;
-        ListNode merge = cur;
+        ListNode newHead = new ListNode(-1);//创建一个傀儡节点,val值没有任何意义
+        //傀儡节点的next值即为返回的头节点
+        ListNode temp = newHead;
 
         //其中一个为空链表
         if(head1 == null){
@@ -122,22 +176,25 @@ public class MyLinkedList {
             return head1;
         }
 
-        while(pre1 != null && pre2 != null) {
-            if (pre1.val <= pre2.val) {
-                cur.next = pre1;
-                pre1 = pre1.next;
+        //两个链表有元素
+        while(head1 != null && head2 != null) {
+            if (head1.val < head2.val) {
+                temp.next = head1;
+                head1 = head1.next;
+                temp = temp.next;
             } else {
-                cur.next = pre2;
-                pre2 = pre2.next;
+                temp.next = head2;
+                head2 = head2.next;
+                temp = temp.next;
             }
-            cur = cur.next;
         }
-        if(pre1 != null){
-            cur.next = pre1;
+        //判断是否有链表有空
+        if(head1 != null){
+            temp.next = head1;
         }else{
-            cur.next = pre2;
+            temp.next = head2;
         }
-        return merge.next;
+        return newHead.next;
     }
 
     /**
