@@ -11,6 +11,50 @@ import java.util.List;
  */
 
 public class MyLinkedList {
+    /**
+     * 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
+     * @param head
+     * @return
+     */
+    public ListNode detectCycle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head;
+        //找到相遇点
+        while(fast != null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(fast == slow){
+                break;
+            }
+        }//此时两种情况 ： 相遇  或 为空
+        if(fast == null || fast.next == null){
+            return null;
+        }
+        //
+        slow = head;
+        while(fast != slow){
+            slow = slow.next;
+            fast = fast.next;
+        }
+        return fast;
+    }
+    /**
+     * 判断链表是否有环
+     * @param head
+     * @return
+     */
+    public boolean hasCycle(ListNode head){
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null && fast.next != null){
+            fast = fast.next.next;
+            slow = slow.next;
+            if(fast == slow){
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * 找到两个单链表相交的起始节点
