@@ -8,7 +8,44 @@ import java.util.List;
  * Time: 10:16
  */
 public class TestDemo {
+    //双链表
     public static void main(String[] args) {
+        TestLinkedList testLinkedList = new TestLinkedList();
+        //头插法
+//        testLinkedList.addLast(1);
+//        testLinkedList.addLast(2);
+//        testLinkedList.addLast(3);
+//        testLinkedList.addLast(4);
+//        testLinkedList.display();
+
+        //尾插法
+        testLinkedList.addFirst(1);
+        testLinkedList.addFirst(2);
+        testLinkedList.addFirst(3);
+        testLinkedList.addFirst(1);
+        testLinkedList.display();  //4 3 2 1
+
+//        //任意位置插入
+//        testLinkedList.addIndex(3,66);
+//        testLinkedList.display();  //4 3 2 66 1
+//
+//        //是否存在key
+//        testLinkedList.contains(3);
+//        System.out.println(testLinkedList.contains(3));
+
+        //删除第一次出现关键字为key的节点
+//        testLinkedList.remove(1);
+//        testLinkedList.display();
+
+        //删除所有值为key的节点
+        testLinkedList.removeAllKey(1);
+        System.out.println("==========");
+        testLinkedList.display();
+
+    }
+
+    //单链表
+    public static void main1(String[] args) {
         MyLinkedList myLinkedList = new MyLinkedList();
         int[] nums = {1,2,6,3,5,6};
         ListNode head = new ListNode(nums);
