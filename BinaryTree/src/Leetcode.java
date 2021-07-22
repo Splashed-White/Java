@@ -85,7 +85,7 @@ public class Leetcode {
         return true;
     }
 
-    /**?
+    /**
      * 通过先序遍历字符串 创建一棵二叉树，输出其中序遍历结果
      * 输入: abc##de#g##f###
      * 输出: c b e g d f a
@@ -152,33 +152,31 @@ public class Leetcode {
 
     /**
      *二叉树搜索树转换成排序双向链表
+     * ★二叉搜索树的中序遍历有序
+     * 1. 中序遍历二叉树，并改指向；需要引入一个pre引用指向前驱
+     * 2. 返回双向链表的头节点
      * @param pRootOfTree
      * @return
      */
     public TreeNode prev = null;
-
+    //中序遍历
     public void ConvertChild(TreeNode pCur) {
-        if(pCur == null) {
-            return;
-        }
+        if(pCur == null) return;
         ConvertChild(pCur.left);
-        //打印
         pCur.left = prev;
-        if(prev != null) {
+        if(prev != null){
             prev.right = pCur;
         }
         prev = pCur;
         ConvertChild(pCur.right);
     }
 
+    //返回双向链表的头节点
     public TreeNode Convert(TreeNode pRootOfTree) {
         if(pRootOfTree == null) return null;
-
         ConvertChild(pRootOfTree);
-
         TreeNode head = pRootOfTree;
-
-        while(head.left != null) {
+        while(head.left != null){
             head = head.left;
         }
         return head;
@@ -186,12 +184,42 @@ public class Leetcode {
 
     /**
      * 根据一棵树的前序遍历与中序遍历构造二叉树
+     *
      * @param preorder
      * @param inorder
      * @return
      */
-    public TreeNode buildTree(int[] preorder, int[] inorder){
+    public int prindex = 0;
+    public TreeNode buildTreeChild1(char[] preorder,char[] inorder,int inbegin,int inend) {
+        //1. 判断若左树 或 右树 为空，
+        //eg: 前序：ABC  中序：ABC
+        // 此时第二次递归进入函数时，inbegin = 0,inend = -1 ,此时左子树为空;
+        if(inbegin > inend){
+            return null;
+        }
+        //2.查找根节点在中序遍历中的下标，由此分为两段，左右递归
+        //根节点就是前序遍历的第一个节点
+        TreeNode root = new TreeNode(preorder[prindex]); //根节点
+        int rootIndex = findRootIndex(inorder,inbegin,inend,preorder[prindex]);
+        prindex++;
+        root.left = buildTreeChild1(preorder,inorder,inbegin,rootIndex-1);
+        root.right = buildTreeChild1(preorder,inorder,rootIndex+1,inend);
+        return root;
     }
+    //就是一个数组当中的查找代码
+    public int findRootIndex(char[] inorder,int inbegin,int inend,int key) {
+        for (int j = inbegin; j <= inend; j++) {
+            if(inorder[j] == key){
+                return j;
+            }
+        }
+        return -1;
+    }
+    public TreeNode buildTree(char[] preorder, char[] inorder){
+        if(preorder == null || inorder == null) return null;
+        return buildTreeChild1(preorder,inorder,0,preorder.length-1);
+    }
+
 
     /**
      * 根据一棵树的中序遍历与后序遍历构造二叉树
@@ -199,8 +227,33 @@ public class Leetcode {
      * @param postorder
      * @return
      */
-    public TreeNode buildTree(int[] inorder, int[] postorder){
-
+    public int postindex = 0;//在方法外部，无法使用postorder数组，可以在buildTree2中赋值
+    public TreeNode buildTreeChild2(char[] inorder,char[] postorder,int inbegin,int inend) {
+        //1. 判断若左树 或 右树 为空
+        if(inbegin > inend){
+            return null;
+        }
+        //2.查找根节点在中序遍历中的下标，由此分为两段，左右递归
+        //根节点是后序遍历的最后一个节点
+        TreeNode root = new TreeNode(postorder[postindex]); //根节点
+        int rootIndex = findRootIndex2(inorder,inbegin,inend,inorder[postindex]);
+        postindex--;
+        root.left = buildTreeChild2(inorder,postorder,inbegin,rootIndex-1);
+        root.right = buildTreeChild2(inorder,postorder,rootIndex+1,inend);
+        return root;
+    }
+    public int findRootIndex2(char[] inorder,int inbegin,int inend,int key) {
+        for (int j = inbegin; j <= inend; j++) {
+            if(inorder[j] == key){
+                return j;
+            }
+        }
+        return -1;
+    }
+    public TreeNode buildTree2(char[] inorder, char[] postorder){
+        if(inorder == null || postorder == null) return null;
+        postindex = postorder.length-1;
+        return buildTreeChild2(inorder,postorder,0,inorder.length-1);
     }
 
     /**
