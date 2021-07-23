@@ -258,10 +258,42 @@ public class Leetcode {
 
     /**
      * 根据二叉树创建字符串
-     * @param root
+     * 输入: 二叉树: [1,2,3,4] 前序遍历序列
+     * 输出: "1(2(4))(3)"
+     * @param str
      * @return
      */
-    public String tree2str(TreeNode root) {
+    public void tree2strChild(TreeNode root,StringBuilder str) {
+        //中序遍历 过程中修改字符串
+        if(root == null) return;
+        str.append(root.val); //根节点存入字符串
+        if(root.left == null){
+            if(root.right == null){
+                return; //左右皆空
+            }else{
+                str.append("()"); //右空
+            }
+        }else{
+            //左不空，就一直向下遍历，直到遇到空，加")"
+            str.append("(");
+            tree2strChild(root.left,str);
+            str.append(")");
+        }
+        if(root.right ==null){
+            return;
+        }else{
+            //右不空，就一直向下遍历，直到遇到空，加")"
+            str.append("(");
+            tree2strChild(root.right,str);
+            str.append(")");
+        }
 
+    }
+    public String tree2str(TreeNode root) {
+        if(root == null) return null;
+        //定义为StringBuilder可使用append()方法
+        StringBuilder str = new StringBuilder();
+        tree2strChild(root,str);
+        return str.toString();
     }
 }
