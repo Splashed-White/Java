@@ -20,7 +20,7 @@ public class MergeSort_Non {
         int e1 = s1+gap-1;
         int s2 = e1+1;
         //int e2 = s2+gap-1 >= array.length ? array.length-1 : s2+gap-1;
-        int e2 = s2+gap-1 < array.length ?  s2+gap-1 : array.length-1;
+        int e2 = s2+gap-1 < array.length ?  s2+gap-1 : array.length-1;  //第二段数组可能不是gap个数
 
         //保证有两个归并段
         while (s2 < array.length) {
@@ -37,7 +37,7 @@ public class MergeSort_Non {
             while (s2 <= e2) {
                 tmp[k++] = array[s2++];
             }
-            //一组完了 确定新的区间的开始和结束
+            //一组完了 确定新的组惊醒归并，更新新区间的开始和结束
             s1 = e2+1;
             e1 = s1+gap-1;
             s2 = e1+1;
