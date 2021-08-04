@@ -1,6 +1,7 @@
 package Test;
 
 import Solution.数组转BST;
+import Solution.最近公共祖先;
 import Solution.翻转二叉树;
 import Solution.路径求和;
 import Tree.TreeUtil;
@@ -49,7 +50,7 @@ public class Test_Util {
         System.out.println();*/
 
         //翻转二叉树
-        String treeNodeValues = "4,2,1,#,#,3,#,#,7,6,#,#,9,#,#";
+        /*String treeNodeValues = "4,2,1,#,#,3,#,#,7,6,#,#,9,#,#";
         TreeUtil treeutil = new TreeUtil();
         treeutil.setValues(treeNodeValues);
         TreeNode root = new TreeNode();
@@ -61,6 +62,6 @@ public class Test_Util {
         num3.invertTree(root);
         System.out.println("翻转后二叉树前序遍历：");
         treeutil.preOrder(root);
-        System.out.println();
+        System.out.println();*/
     }
 }
