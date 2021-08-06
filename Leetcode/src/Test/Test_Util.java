@@ -1,9 +1,6 @@
 package Test;
 
-import Solution.数组转BST;
-import Solution.最近公共祖先;
-import Solution.翻转二叉树;
-import Solution.路径求和;
+import Solution.*;
 import Tree.TreeUtil;
 import Tree.TreeNode;
 
@@ -63,5 +60,15 @@ public class Test_Util {
         System.out.println("翻转后二叉树前序遍历：");
         treeutil.preOrder(root);
         System.out.println();*/
+
+        //左叶子和
+        String treeNodeValues = "1,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        左叶子和 num4 = new 左叶子和();
+        int a = num4.sumOfLeftLeaves(root);
+        System.out.println(a);
     }
 }
