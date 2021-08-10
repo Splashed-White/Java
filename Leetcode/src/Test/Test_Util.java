@@ -4,6 +4,10 @@ import Solution.*;
 import Tree.TreeUtil;
 import Tree.TreeNode;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 /**
  * Created with IntelliJ IDEA.
  * Description:
@@ -62,13 +66,28 @@ public class Test_Util {
         System.out.println();*/
 
         //左叶子和
-        String treeNodeValues = "1,#,#";
+        /*String treeNodeValues = "1,2,4,#,#,5,#,#,3,#,#";
         TreeUtil treeutil = new TreeUtil();
         treeutil.setValues(treeNodeValues);
         TreeNode root = new TreeNode();
         root = TreeUtil.createTree();
         左叶子和 num4 = new 左叶子和();
         int a = num4.sumOfLeftLeaves(root);
-        System.out.println(a);
+        System.out.println(a);*/
+
+        //BST的众数
+        //String treeNodeValues = "1,#,2,2,#,#,#";
+        //String treeNodeValues = "1,#,2";
+        //String treeNodeValues = "2,#,3,#,4,#,5,#,6,#,#";
+        String treeNodeValues = "1,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        BST的众数 num5 = new BST的众数();
+        /*List<Integer> r1 = num5.inorder(root);
+        System.out.println(r1);*/
+        int[] ret = num5.findMode(root);
+        System.out.println(Arrays.toString(ret));
     }
 }
