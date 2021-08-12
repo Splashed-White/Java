@@ -76,7 +76,7 @@ public class Test_Util {
         System.out.println(a);*/
 
         //BST的众数
-        //String treeNodeValues = "1,#,2,2,#,#,#";
+        /*//String treeNodeValues = "1,#,2,2,#,#,#";
         //String treeNodeValues = "1,#,2";
         //String treeNodeValues = "2,#,3,#,4,#,5,#,6,#,#";
         String treeNodeValues = "1,#,#";
@@ -85,9 +85,20 @@ public class Test_Util {
         TreeNode root = new TreeNode();
         root = TreeUtil.createTree();
         BST的众数 num5 = new BST的众数();
-        /*List<Integer> r1 = num5.inorder(root);
-        System.out.println(r1);*/
+        *//*List<Integer> r1 = num5.inorder(root);
+        System.out.println(r1);*//*
         int[] ret = num5.findMode(root);
-        System.out.println(Arrays.toString(ret));
+        System.out.println(Arrays.toString(ret));*/
+
+        //BST的最小绝对差
+        String treeNodeValues = "4,2,1,#,#,3,#,#,6,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        BST的最小绝对差 num6 = new BST的最小绝对差();
+        int ret = num6.getMinimumDifference(root);
+        System.out.println(ret);
+
     }
 }
