@@ -100,7 +100,7 @@ public class Test_Util {
         int ret = num6.getMinimumDifference(root);
         System.out.println(ret);*/
 
-        //二叉树的直径
+        /*//二叉树的直径
         String treeNodeValues = "4,2,#,#,1,2,4,6,0,#,2,#,#,1,2,#,#,#,#,2,1,1,#,#,#,2,2,2,#,#,#,#,2,#,#";
         TreeUtil treeutil = new TreeUtil();
         treeutil.setValues(treeNodeValues);
@@ -108,6 +108,16 @@ public class Test_Util {
         root = TreeUtil.createTree();
         二叉树的直径 num7 = new 二叉树的直径();
         int ret = num7.diameterOfBinaryTree(root);
+        System.out.println(ret);*/
+
+        //二叉树的坡度
+        String treeNodeValues = "4,2,3,#,#,5,#,#,9,#,7,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        二叉树的坡度 num8 = new 二叉树的坡度();
+        int ret = num8.findTilt(root);
         System.out.println(ret);
 
     }
