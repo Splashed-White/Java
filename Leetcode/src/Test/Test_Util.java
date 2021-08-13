@@ -90,7 +90,7 @@ public class Test_Util {
         int[] ret = num5.findMode(root);
         System.out.println(Arrays.toString(ret));*/
 
-        //BST的最小绝对差
+        /*//BST的最小绝对差
         String treeNodeValues = "4,2,1,#,#,3,#,#,6,#,#";
         TreeUtil treeutil = new TreeUtil();
         treeutil.setValues(treeNodeValues);
@@ -98,6 +98,16 @@ public class Test_Util {
         root = TreeUtil.createTree();
         BST的最小绝对差 num6 = new BST的最小绝对差();
         int ret = num6.getMinimumDifference(root);
+        System.out.println(ret);*/
+
+        //二叉树的直径
+        String treeNodeValues = "4,2,#,#,1,2,4,6,0,#,2,#,#,1,2,#,#,#,#,2,1,1,#,#,#,2,2,2,#,#,#,#,2,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        二叉树的直径 num7 = new 二叉树的直径();
+        int ret = num7.diameterOfBinaryTree(root);
         System.out.println(ret);
 
     }
