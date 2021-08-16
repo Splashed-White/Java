@@ -111,14 +111,23 @@ public class Test_Util {
         System.out.println(ret);*/
 
         //二叉树的坡度
-        String treeNodeValues = "4,2,3,#,#,5,#,#,9,#,7,#,#";
+        /*String treeNodeValues = "4,2,3,#,#,5,#,#,9,#,7,#,#";
         TreeUtil treeutil = new TreeUtil();
         treeutil.setValues(treeNodeValues);
         TreeNode root = new TreeNode();
         root = TreeUtil.createTree();
         二叉树的坡度 num8 = new 二叉树的坡度();
         int ret = num8.findTilt(root);
-        System.out.println(ret);
+        System.out.println(ret);*/
 
+        //二叉树的层平均值
+        String treeNodeValues = "3,9,#,#,20,15,#,#,7,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        二叉树的层平均值 num9 = new 二叉树的层平均值();
+        List<Double> ret = num9.averageOfLevels(root);
+        System.out.println(ret);
     }
 }
