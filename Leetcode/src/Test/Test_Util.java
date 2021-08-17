@@ -1,12 +1,8 @@
 package Test;
 
-import Solution.*;
+import BinaryTree.*;
 import Tree.TreeUtil;
 import Tree.TreeNode;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -121,13 +117,36 @@ public class Test_Util {
         System.out.println(ret);*/
 
         //二叉树的层平均值
-        String treeNodeValues = "3,9,#,#,20,15,#,#,7,#,#";
+        /*String treeNodeValues = "3,9,#,#,20,15,#,#,7,#,#";
         TreeUtil treeutil = new TreeUtil();
         treeutil.setValues(treeNodeValues);
         TreeNode root = new TreeNode();
         root = TreeUtil.createTree();
         二叉树的层平均值 num9 = new 二叉树的层平均值();
         List<Double> ret = num9.averageOfLevels(root);
-        System.out.println(ret);
+        System.out.println(ret);*/
+
+        //二叉树中的第二小节点
+        /*String treeNodeValues = "4,6,10,#,#,6,#,#,4,4,#,#,5,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        二叉树中的第二小节点 num10 = new 二叉树中的第二小节点();
+        int ret = num10.findSecondMinimumValue(root);
+        System.out.println(ret);*/
+
+        //BST中的搜索
+        String treeNodeValues = "4,2,1,#,#,3,#,#,7,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        int val = 2;
+        BST中的搜索 num11 = new BST中的搜索();
+        TreeNode p  = num11.searchBST(root,val);
+        System.out.println("前序遍历二叉树：");
+        treeutil.preOrder(p);
+        System.out.println();
     }
 }
