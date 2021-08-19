@@ -137,7 +137,7 @@ public class Test_Util {
         System.out.println(ret);*/
 
         //BST中的搜索
-        String treeNodeValues = "4,2,1,#,#,3,#,#,7,#,#";
+        /*String treeNodeValues = "4,2,1,#,#,3,#,#,7,#,#";
         TreeUtil treeutil = new TreeUtil();
         treeutil.setValues(treeNodeValues);
         TreeNode root = new TreeNode();
@@ -147,6 +147,20 @@ public class Test_Util {
         TreeNode p  = num11.searchBST(root,val);
         System.out.println("前序遍历二叉树：");
         treeutil.preOrder(p);
-        System.out.println();
+        System.out.println();*/
+
+        //叶子相似的树
+        String treeNodeValues1 = "1,#,#";
+        String treeNodeValues2 = "2,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues1);
+        treeutil.setValues(treeNodeValues2);
+        TreeNode root1 = new TreeNode();
+        root1 = TreeUtil.createTree();
+        TreeNode root2 = new TreeNode();
+        root2 = TreeUtil.createTree();
+        叶子相似的树 num12 = new 叶子相似的树();
+        boolean flag = num12.leafSimilar(root1,root2);
+        System.out.println(flag);
     }
 }
