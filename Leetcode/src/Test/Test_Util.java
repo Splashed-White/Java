@@ -150,7 +150,7 @@ public class Test_Util {
         System.out.println();*/
 
         //叶子相似的树
-        String treeNodeValues1 = "1,#,#";
+        /*String treeNodeValues1 = "1,#,#";
         String treeNodeValues2 = "2,#,#";
         TreeUtil treeutil = new TreeUtil();
         treeutil.setValues(treeNodeValues1);
@@ -161,6 +161,18 @@ public class Test_Util {
         root2 = TreeUtil.createTree();
         叶子相似的树 num12 = new 叶子相似的树();
         boolean flag = num12.leafSimilar(root1,root2);
-        System.out.println(flag);
+        System.out.println(flag);*/
+
+        //二叉树的堂兄弟节点
+        String treeNodeValues1 = "1,2,4,#,#,#,3,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues1);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        int x = 4;
+        int y = 3;
+        二叉树的堂兄弟节点 num13 = new 二叉树的堂兄弟节点();
+        boolean flag2 = num13.isCousins(root,x,y);
+        System.out.println(flag2);
     }
 }
