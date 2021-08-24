@@ -15,9 +15,10 @@ public class 二叉树的镜像 {
         if(root.left == null && root.right == null) return root;
         if(root.left != null && root.right == null){
             root.right = inorder(root.left);
-        }
-        if(root.left == null && root.right != null){
+            root.left = null;
+        }else if(root.left == null && root.right != null){
             root.left = inorder(root.right);
+            root.right =null;
         }
         if(root.left != null && root.right != null){
             TreeNode temp = root.left;
