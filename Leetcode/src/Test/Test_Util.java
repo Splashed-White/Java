@@ -164,7 +164,7 @@ public class Test_Util {
         System.out.println(flag);*/
 
         //二叉树的堂兄弟节点
-        String treeNodeValues1 = "1,2,4,#,#,#,3,#,#";
+        /*String treeNodeValues1 = "1,2,4,#,#,#,3,#,#";
         TreeUtil treeutil = new TreeUtil();
         treeutil.setValues(treeNodeValues1);
         TreeNode root = new TreeNode();
@@ -173,6 +173,40 @@ public class Test_Util {
         int y = 3;
         二叉树的堂兄弟节点 num13 = new 二叉树的堂兄弟节点();
         boolean flag2 = num13.isCousins(root,x,y);
-        System.out.println(flag2);
+        System.out.println(flag2);*/
+
+        //二叉树的镜像
+        //String treeNodeValues1 = "4,2,1,#,#,3,#,#,7,6,#,#,9,#,#";
+        String treeNodeValues1 = "1,2,#,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues1);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        二叉树的镜像 num14 = new 二叉树的镜像();
+        TreeNode node = num14.mirrorTree(root);
+        System.out.println("前序遍历二叉树：");
+        treeutil.preOrder(node);
+        System.out.println();
+
+        //对称二叉树
+        /*String treeNodeValues1 = "1,2,2,#,#,2,#,#,2,#,2,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues1);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        对称二叉树 num15 = new 对称二叉树();
+        boolean flag5 = num15.isSymmetric(root);
+        System.out.println(flag5);*/
+
+        //二叉树的平衡
+        /*String treeNodeValues1 = "1,2,3,4,#,#,#,#,2,#,3,#,4,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues1);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        二叉树的平衡 num16 = new 二叉树的平衡();
+        boolean flag6 = num16.isBalanced(root);
+        System.out.println(flag6);*/
+
     }
 }
