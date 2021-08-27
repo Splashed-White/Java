@@ -3,6 +3,8 @@ package Test;
 import BinaryTree.*;
 import Tree.TreeUtil;
 import Tree.TreeNode;
+import com.sun.javaws.IconUtil;
+import sun.reflect.generics.tree.Tree;
 
 /**
  * Created with IntelliJ IDEA.
@@ -176,7 +178,7 @@ public class Test_Util {
         System.out.println(flag2);*/
 
         //二叉树的镜像
-        //String treeNodeValues1 = "4,2,1,#,#,3,#,#,7,6,#,#,9,#,#";
+        /*//String treeNodeValues1 = "4,2,1,#,#,3,#,#,7,6,#,#,9,#,#";
         String treeNodeValues1 = "1,2,#,#,#";
         TreeUtil treeutil = new TreeUtil();
         treeutil.setValues(treeNodeValues1);
@@ -186,7 +188,7 @@ public class Test_Util {
         TreeNode node = num14.mirrorTree(root);
         System.out.println("前序遍历二叉树：");
         treeutil.preOrder(node);
-        System.out.println();
+        System.out.println();*/
 
         //对称二叉树
         /*String treeNodeValues1 = "1,2,2,#,#,2,#,#,2,#,2,#,#";
@@ -207,6 +209,29 @@ public class Test_Util {
         二叉树的平衡 num16 = new 二叉树的平衡();
         boolean flag6 = num16.isBalanced(root);
         System.out.println(flag6);*/
+
+        //BST的第K大节点
+        /*//String treeNodeValues1 = "3,1,#,2,#,#,4,#,#";
+        String treeNodeValues1 = "5,3,2,1,#,#,#,4,#,#,6,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues1);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        BST的第K大节点 num17 = new BST的第K大节点();
+        int ret = num17.kthLargest(root,3);
+        System.out.println(ret);*/
+
+        //BiNode
+        String treeNodeValues1 = "4,2,1,0,#,#,#,3,#,#,5,#,6,#,#";
+        TreeUtil treeutil = new TreeUtil();
+        treeutil.setValues(treeNodeValues1);
+        TreeNode root = new TreeNode();
+        root = TreeUtil.createTree();
+        BiNode num18 = new BiNode();
+        TreeNode node = num18.convertBiNode(root);
+        System.out.println("中序遍历二叉树：");
+        treeutil.inOrder(node);
+        System.out.println();
 
     }
 }
