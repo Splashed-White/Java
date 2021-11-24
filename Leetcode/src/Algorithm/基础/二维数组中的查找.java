@@ -1,4 +1,4 @@
-package Algorithm;
+package Algorithm.基础;
 
 /**
  * Created with IntelliJ IDEA.
